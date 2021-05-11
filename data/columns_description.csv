@@ -1,0 +1,139 @@
+description,feature name,category,type
+I enjoy listening to music.,Music,music_preference,numeric
+I prefer.,Slow songs or fast songs,music_preference,numeric
+"Dance, Disco, Funk",Dance,music_preference,numeric
+Folk music,Folk,music_preference,numeric
+Country,Country,music_preference,numeric
+Classical,Classical music,music_preference,numeric
+Musicals,Musical,music_preference,numeric
+Pop,Pop,music_preference,numeric
+Rock,Rock,music_preference,numeric
+"Metal, Hard rock",Metal or Hardrock,music_preference,numeric
+Punk,Punk,music_preference,numeric
+"Hip hop, Rap","Hiphop, Rap",music_preference,numeric
+"Reggae, Ska","Reggae, Ska",music_preference,numeric
+"Swing, Jazz","Swing, Jazz",music_preference,numeric
+Rock n Roll,Rock n roll,music_preference,numeric
+Alternative music,Alternative,music_preference,numeric
+Latin,Latino,music_preference,numeric
+"Techno, Trance","Techno, Trance",music_preference,numeric
+Opera,Opera,movie_preference,numeric
+I really enjoy watching movies.,Movies,movie_preference,numeric
+Horror movies,Horror,movie_preference,numeric
+Thriller movies,Thriller,movie_preference,numeric
+Comedies,Comedy,movie_preference,numeric
+Romantic movies,Romantic,movie_preference,numeric
+Sci-fi movies,Sci-fi,movie_preference,numeric
+War movies,War,movie_preference,numeric
+Tales,Fantasy/Fairy tales,movie_preference,numeric
+Cartoons,Animated,movie_preference,numeric
+Documentaries,Documentary,movie_preference,numeric
+Western movies,Western,movie_preference,numeric
+Action movies,Action,movie_preference,numeric
+History,History,hobbies_interests,numeric
+Psychology,Psychology,hobbies_interests,numeric
+Politics,Politics,hobbies_interests,numeric
+Mathematics,Mathematics,hobbies_interests,numeric
+Physics,Physics,hobbies_interests,numeric
+Internet,Internet,hobbies_interests,numeric
+"PC Software, Hardware",PC,hobbies_interests,numeric
+"Economy, Management",Economy Management,hobbies_interests,numeric
+Biology,Biology,hobbies_interests,numeric
+Chemistry,Chemistry,hobbies_interests,numeric
+Poetry reading,Reading,hobbies_interests,numeric
+Geography,Geography,hobbies_interests,numeric
+Foreign languages,Foreign languages,hobbies_interests,numeric
+Medicine,Medicine,hobbies_interests,numeric
+Law,Law,hobbies_interests,numeric
+Cars,Cars,hobbies_interests,numeric
+Art,Art exhibitions,hobbies_interests,numeric
+Religion,Religion,hobbies_interests,numeric
+Outdoor activities,"Countryside, outdoors",hobbies_interests,numeric
+Dancing,Dancing,hobbies_interests,numeric
+Playing musical instruments,Musical instruments,hobbies_interests,numeric
+Poetry writing,Writing,hobbies_interests,numeric
+Sport and leisure activities,Passive sport,hobbies_interests,numeric
+Sport at competitive level,Active sport,hobbies_interests,numeric
+Gardening,Gardening,hobbies_interests,numeric
+Celebrity lifestyle,Celebrities,hobbies_interests,numeric
+Shopping,Shopping,hobbies_interests,numeric
+Science and technology,Science and technology,hobbies_interests,numeric
+Theatre,Theatre,hobbies_interests,numeric
+Socializing,Fun with friends,hobbies_interests,numeric
+Adrenaline sports,Adrenaline sports,hobbies_interests,numeric
+Pets,Pets,hobbies_interests,numeric
+Flying,Flying,phobias,numeric
+"Thunder, lightning",Storm,phobias,numeric
+Darkness,Darkness,phobias,numeric
+Heights,Heights,phobias,numeric
+Spiders,Spiders,phobias,numeric
+Snakes,Snakes,phobias,numeric
+"Rats, mice",Rats,phobias,numeric
+Ageing,Ageing,phobias,numeric
+Dangerous dogs,Dangerous dogs,phobias,numeric
+Public speaking,Fear of public speaking,phobias,numeric
+I take notice of what goes on around me.,Daily events,personality_viewsOnLife_opinions,numeric
+I try to do tasks as soon as possible and not leave them until last minute.,Prioritising workload,personality_viewsOnLife_opinions,numeric
+I always make a list so I don't forget anything.,Writing notes,personality_viewsOnLife_opinions,numeric
+I often study or work even in my spare time.,Workaholism,personality_viewsOnLife_opinions,numeric
+I look at things from all different angles before I go ahead.,Thinking ahead,personality_viewsOnLife_opinions,numeric
+I believe that bad people will suffer one day and good people will be rewarded.,Final judgement,personality_viewsOnLife_opinions,numeric
+I am reliable at work and always complete all tasks given to me.,Reliability,personality_viewsOnLife_opinions,numeric
+I always keep my promises.,Keeping promises,personality_viewsOnLife_opinions,numeric
+I can fall for someone very quickly and then completely lose interest.,Loss of interest,personality_viewsOnLife_opinions,numeric
+I would rather have lots of friends than lots of money.,Friends versus money,personality_viewsOnLife_opinions,numeric
+I always try to be the funniest one.,Funniness,personality_viewsOnLife_opinions,numeric
+I can be two faced sometimes.,Fake,personality_viewsOnLife_opinions,numeric
+I damaged things in the past when angry.,Criminal damage,personality_viewsOnLife_opinions,numeric
+I take my time to make decisions.,Decision making,personality_viewsOnLife_opinions,numeric
+I always try to vote in elections.,Elections,personality_viewsOnLife_opinions,numeric
+I often think about and regret the decisions I make.,Self-criticism,personality_viewsOnLife_opinions,numeric
+I can tell if people listen to me or not when I talk to them.,Judgment calls,personality_viewsOnLife_opinions,numeric
+I am a hypochondriac.,Hypochondria,personality_viewsOnLife_opinions,numeric
+I am emphatetic person.,Empathy,personality_viewsOnLife_opinions,numeric
+I eat because I have to. I don't enjoy food and eat as fast as I can.,Eating to survive,personality_viewsOnLife_opinions,numeric
+I try to give as much as I can to other people at Christmas.,Giving,personality_viewsOnLife_opinions,numeric
+I don't like seeing animals suffering.,Compassion to animals,personality_viewsOnLife_opinions,numeric
+I look after things I have borrowed from others.,Borrowed stuff,personality_viewsOnLife_opinions,numeric
+I feel lonely in life.,Loneliness,personality_viewsOnLife_opinions,numeric
+I used to cheat at school.,Cheating in school,personality_viewsOnLife_opinions,numeric
+I worry about my health.,Health,personality_viewsOnLife_opinions,numeric
+I wish I could change the past because of the things I have done.,Changing the past,personality_viewsOnLife_opinions,numeric
+I believe in God.,God,personality_viewsOnLife_opinions,numeric
+I always have good dreams.,Dreams,personality_viewsOnLife_opinions,numeric
+I always give to charity.,Charity,personality_viewsOnLife_opinions,numeric
+I have lots of friends.,Number of friends,personality_viewsOnLife_opinions,numeric
+I am very patient.,Waiting,personality_viewsOnLife_opinions,numeric
+I can quickly adapt to a new environment.,New environment,personality_viewsOnLife_opinions,numeric
+My moods change quickly.,Mood swings,personality_viewsOnLife_opinions,numeric
+I am well mannered and I look after my appearance.,Appearence and gestures,personality_viewsOnLife_opinions,numeric
+I enjoy meeting new people.,Socializing,personality_viewsOnLife_opinions,numeric
+I always let other people know about my achievements.,Achievements,personality_viewsOnLife_opinions,numeric
+I think carefully before answering any important letters.,Responding to a serious letter,personality_viewsOnLife_opinions,numeric
+I enjoy childrens' company.,Children,personality_viewsOnLife_opinions,numeric
+I am not afraid to give my opinion if I feel strongly about something.,Assertiveness,personality_viewsOnLife_opinions,numeric
+I can get angry very easily.,Getting angry,personality_viewsOnLife_opinions,numeric
+I always make sure I connect with the right people.,Knowing the right people,personality_viewsOnLife_opinions,numeric
+I have to be well prepared before public speaking.,Public speaking,personality_viewsOnLife_opinions,numeric
+I will find a fault in myself if people don't like me.,Unpopularity,personality_viewsOnLife_opinions,numeric
+I cry when I feel down or things don't go the right way.,Life struggles,personality_viewsOnLife_opinions,numeric
+I am 100% happy with my life.,Happiness in life,personality_viewsOnLife_opinions,numeric
+I am always full of life and energy.,Energy levels,personality_viewsOnLife_opinions,numeric
+"I prefer big dangerous dogs to smaller, calmer dogs.",Small - big dogs,personality_viewsOnLife_opinions,numeric
+I believe all my personality traits are positive.,Personality,personality_viewsOnLife_opinions,numeric
+If I find something the doesn't belong to me I will hand it in.,Finding lost valuables,personality_viewsOnLife_opinions,numeric
+I find it very difficult to get up in the morning.,Getting up,personality_viewsOnLife_opinions,numeric
+I have many different hobbies and interests.,Interests or hobbies,personality_viewsOnLife_opinions,numeric
+I always listen to my parents' advice.,Parents' advice,personality_viewsOnLife_opinions,numeric
+I enjoy taking part in surveys.,Questionnaires or polls,personality_viewsOnLife_opinions,numeric
+I save all the money I can.,Finances,spending_habits,numeric
+I enjoy going to large shopping centres.,Shopping centres,spending_habits,numeric
+I prefer branded clothing to non branded.,Branded clothing,spending_habits,numeric
+I spend a lot of money on  partying and socializing.,Entertainment spending,spending_habits,numeric
+I spend a lot of money on my appearance.,Spending on looks,spending_habits,numeric
+I spend a lot of money on gadgets.,Spending on gadgets,spending_habits,numeric
+"I will hapilly pay more money for good, quality or healthy food.",Spending on healthy eating,spending_habits,numeric
+Age,Age,demographics,numeric
+Gender,Gender,demographics,categorical
+Highest education achieved,Education,demographics,categorical
+I am the only child,Only child,demographics,categorical
