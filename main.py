@@ -10,10 +10,8 @@ def main():
 
     hobbies_and_interests = DAO('data/HobbiesAndInterests_Vars.tsv', delimiter='\t')
     sociodemographic = DAO('data/SocioDemographic_Vars.tsv', delimiter='\t')
-    # hobbies_and_interests = DAO('data/HobbiesAndInterests_Vars.tsv', delimiter='\t')
-    # hobbies_and_interests = DAO('data/HobbiesAndInterests_Vars.tsv', delimiter='\t')
-    # hobbies_and_interests = DAO('data/HobbiesAndInterests_Vars.tsv', delimiter='\t')
 
+    # k_mean_euclidean.execute(hobbies_and_interests.dataset)
     k_mean_euclidean.execute(sociodemographic.dataset)
 
 
