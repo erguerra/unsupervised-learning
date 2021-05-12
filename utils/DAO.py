@@ -12,5 +12,6 @@ class DAO:
         df.drop('id', axis='columns', inplace=True)
         return df
 
-    def persist_data(self, dataset, output_file):
-        dataset.to_csv(output_file, sep=self.delimiter)
+    def persist_clusters(self, cluster_list, output_file):
+        for i in range(len(cluster_list)):
+            cluster_list[i].to_csv(f'{output_file}{i+1}.tsv', sep=self.delimiter)

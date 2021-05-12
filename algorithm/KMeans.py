@@ -15,18 +15,34 @@ def initialize_centroids(k, dataset):
     return centroids, centroids_neighbors
 
 
-def update_centroid(centroid, neighbors_indices, dataset):
-    if len(neighbors_indices) == 0:
-        return centroid
+def update_centroid_categorical(centroid, neighbors_indices, dataset):
+    for column in centroid.columns:
+        column_values = []
+        for n in neighbors_indices:
+            column_values.append(dataset.iloc[n][column])
+        centroid[column] = max(set(column_values), key=column_values.count)
 
+    return centroid
+
+
+def update_centroid_numerical(centroid, neighbors_indices, dataset):
     for column in centroid.columns:
         summ = 0
         for n in neighbors_indices:
             summ += dataset.iloc[n][column]
-        centroid[column] = summ/len(neighbors_indices)
+        centroid[column] = summ / len(neighbors_indices)
 
     return centroid
 
+
+def update_centroid(centroid, neighbors_indices, dataset, distance):
+    if len(neighbors_indices) == 0:
+        return centroid
+    if distance == Distances.EUCLIDEAN:
+        centroid = update_centroid_numerical(centroid, neighbors_indices, dataset)
+    elif distance == Distances.HAMMING:
+        centroid = update_centroid_categorical(centroid, neighbors_indices, dataset)
+    return centroid
 
 
 def find_closest_centroid_index(centroid_list, instance, distance):
@@ -89,7 +105,7 @@ class KMeans:
             diff_list = []
 
             for i in range(len(centroids)):
-                centroids[i] = update_centroid(centroids[i], centroids_neighbors[i], dataset)
+                centroids[i] = update_centroid(centroids[i], centroids_neighbors[i], dataset, self.distance)
                 diff_list.append(hamming_distance(centroids[i], old_centroids[i]))
 
             if sum(diff_list) > 0:
