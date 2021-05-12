@@ -7,10 +7,11 @@ from algorithm.Distances import Distances
 
 
 def initialize_centroids(k, dataset):
+    new_dataset = copy.deepcopy(dataset)
     centroids = []
     centroids_neighbors = []
     for i in range(k):
-        centroids.append(dataset.sample())
+        centroids.append(new_dataset.sample())
         centroids_neighbors.append([])
     return centroids, centroids_neighbors
 
