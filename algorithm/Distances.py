@@ -17,3 +17,14 @@ def euclidean_distance(first_instance, second_instance):
         summation += np.square(first_instance[i] - second_instance[i])
 
     return np.sqrt(summation)
+
+
+def hamming_distance(first_instance, second_instance):
+    distance = 0
+    centroid = first_instance.squeeze().to_list()
+    instance = second_instance.squeeze().to_list()
+
+    for i in range(len(centroid)):
+        if centroid[i] != instance[i]:
+            distance += 1
+    return distance

@@ -1,26 +1,34 @@
 from algorithm.Distances import Distances
-from algorithm.KMeans2 import KMeans2
+from algorithm.ElbowMethod import ElbowMethod
+from algorithm.KMeans import KMeans
 from utils.DAO import DAO
 
 
 def main():
+    #Elbow method for music and movies dataset
+    music = DAO('data/MusicAndMovies_Vars.tsv', delimiter='\t')
+    elbow = ElbowMethod(list(range(1, 13)), dataset=music.dataset, distance=Distances.EUCLIDEAN)
+    result = elbow.execute()
+    music.persist_data(result, 'data/results/elbow_music')
+
+    # Elbow method for Sociodemographic dataset
+    # music = DAO('data/SocioDemographic_Vars.tsv', delimiter='\t')
+    # elbow = ElbowMethod(list(range(1, 13)), dataset=music.dataset, distance=Distances.HAMMING)
+    # result = elbow.execute()
+    # music.persist_data(result, 'data/results/elbow_socio')
+
     # k_mean_euclidean = KMeans(3, Distances.EUCLIDEAN)
-    # k_mean_hamming = KMeans(8, Distances.HAMMING)
-    #
-    # hobbies_and_interests = DAO('data/HobbiesAndInterests_Vars.tsv', delimiter='\t')
-    # sociodemographic = DAO('data/SocioDemographic_Vars.tsv', delimiter='\t')
-    #
+    # hobbies_and_interests = DAO('data/MusicAndMovies_Vars.tsv', delimiter='\t')
+    # print(hobbies_and_interests.dataset.head(10))
     # gl = k_mean_euclidean.execute(hobbies_and_interests.dataset)
-    # hobbies_and_interests.persist_clusters(gl, 'data/results/Hobbies')
-    # gl = k_mean_hamming.execute(sociodemographic.dataset)
-    # sociodemographic.persist_clusters(gl, 'data/results/SocioDemographic_Vars')
+    # hobbies_and_interests.persist_clusters(gl, 'data/results/music')
 
-    hobbies_and_interests = DAO('data/HobbiesAndInterests_Vars.tsv', delimiter='\t')
-    k_mean_euclidean = KMeans2(8)
-    gl = k_mean_euclidean.execute(hobbies_and_interests.dataset)
+    # k_mean_hamming = KMeans(3, Distances.HAMMING)
+    # socio = DAO('data/SocioDemographic_Vars.tsv', delimiter='\t')
+    # print(socio.dataset.head(10))
+    # gl = k_mean_hamming.execute(socio.dataset)
+    # socio.persist_clusters(gl, 'data/results/socio')
 
-    for i in range(len(gl)):
-        hobbies_and_interests.persist_cluster(gl[i].get_neighbors_df(), f'data/results/Hobbies{i+1}')
 
 
 if __name__ == '__main__':
