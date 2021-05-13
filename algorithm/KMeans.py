@@ -9,20 +9,18 @@ MAX_ITERATIONS = 100
 MIN_EUCLIDEAN_CENTROID_DISTANCE = 0.01
 
 
-def get_mean_avg_v(centroid_list):
-    avgs = []
+def get_mean_wss(centroid_list):
+    wss = []
     for c in centroid_list:
-        avgs.append(c.total_wss)
-    return round(sum(avgs) / len(centroid_list), 3)
+        wss.append(c.total_wss)
+    return round(sum(wss) / len(centroid_list), 3)
 
 
 def initialize_centroids(k, dataset):
     new_dataset = copy.deepcopy(dataset)
     centroids = []
-    centroids_neighbors = []
     for i in range(k):
         centroids.append(new_dataset.sample())
-        centroids_neighbors.append([])
     return centroids
 
 
@@ -75,7 +73,7 @@ class KMeans:
                 centroids[i].update_centroid(self.distance)
                 centroids[i].update_wss(self.distance)
 
-            new_avg = get_mean_avg_v(copy.deepcopy(centroids))
+            new_avg = get_mean_wss(copy.deepcopy(centroids))
 
             if max_iterations == 0 or new_avg == self.avg_total_wss:
                 for i in centroids:
