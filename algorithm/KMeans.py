@@ -1,9 +1,19 @@
 import copy
 
 import numpy as np
-import pandas as pd
 
-from algorithm.Distances import Distances
+from algorithm.Centroid import Centroid
+from algorithm.Distances import Distances, euclidean_distance, hamming_distance
+
+MAX_ITERATIONS = 100
+MIN_EUCLIDEAN_CENTROID_DISTANCE = 0.01
+
+
+def get_mean_avg_v(centroid_list):
+    avgs = []
+    for c in centroid_list:
+        avgs.append(c.total_wss)
+    return round(sum(avgs) / len(centroid_list), 3)
 
 
 def initialize_centroids(k, dataset):
@@ -13,77 +23,27 @@ def initialize_centroids(k, dataset):
     for i in range(k):
         centroids.append(new_dataset.sample())
         centroids_neighbors.append([])
-    return centroids, centroids_neighbors
-
-
-def update_centroid_categorical(centroid, neighbors_indices, dataset):
-    for column in centroid.columns:
-        column_values = []
-        for n in neighbors_indices:
-            column_values.append(dataset.iloc[n][column])
-        centroid[column] = max(set(column_values), key=column_values.count)
-
-    return centroid
-
-
-def update_centroid_numerical(centroid, neighbors_indices, dataset):
-    for column in centroid.columns:
-        summ = 0
-        for n in neighbors_indices:
-            summ += dataset.iloc[n][column]
-        centroid[column] = summ / len(neighbors_indices)
-
-    return centroid
-
-
-def update_centroid(centroid, neighbors_indices, dataset, distance):
-    if len(neighbors_indices) == 0:
-        return centroid
-    if distance == Distances.EUCLIDEAN:
-        centroid = update_centroid_numerical(centroid, neighbors_indices, dataset)
-    elif distance == Distances.HAMMING:
-        centroid = update_centroid_categorical(centroid, neighbors_indices, dataset)
-    return centroid
+    return centroids
 
 
 def find_closest_centroid_index(centroid_list, instance, distance):
     if distance == Distances.EUCLIDEAN:
         distances = []
         for i in centroid_list:
-            distances.append(euclidean_distance(i, instance))
+            distances.append(euclidean_distance(i.centroid, instance))
         return distances.index(min(distances))
     elif distance == Distances.HAMMING:
         distances = []
         for i in centroid_list:
-            distances.append(hamming_distance(i, instance))
+            distances.append(hamming_distance(i.centroid, instance))
         return distances.index(min(distances))
-
-
-def euclidean_distance(centroid, instance):
-    centroid = np.squeeze(centroid.to_numpy())
-    instance = np.squeeze(instance.to_numpy())
-    summation = 0.0
-    for i in range(len(centroid)):
-        summation += np.square(centroid[i] - instance[i])
-
-    return np.sqrt(summation)
-
-
-def hamming_distance(centroid, instance):
-    distance = 0
-    centroid = centroid.squeeze().to_list()
-    instance = instance.squeeze().to_list()
-
-    for i in range(len(centroid)):
-        if centroid[i] != instance[i]:
-            distance += 1
-    return distance
 
 
 class KMeans:
     def __init__(self, k, distance):
         self.k = k
         self.distance = distance
+        self.avg_total_wss = 0.0
 
     def set_distance(self, distance):
         self.distance = distance
@@ -93,31 +53,38 @@ class KMeans:
 
     def execute(self, dataset):
         group_list = []
-        centroids, centroids_neighbors = initialize_centroids(self.k, dataset)
+
+        centroids = initialize_centroids(self.k, dataset)
+
+        for i in range(self.k):
+            centroids[i] = Centroid(centroids[i])
 
         should_repeat = True
-        while should_repeat:
-            for i in range(len(dataset)):
-                closest_centroid = find_closest_centroid_index(centroid_list=centroids, instance=dataset.iloc[i],
-                                                               distance=self.distance)
-                centroids_neighbors[closest_centroid].append(i)
+        max_iterations = MAX_ITERATIONS
 
-            old_centroids = copy.deepcopy(centroids)
-            diff_list = []
+        while should_repeat:
+            print(f'Starting {max_iterations} iteration')
+            max_iterations -= 1
+            for i in range(len(dataset)):
+                instance = dataset.iloc[i]
+                closest_centroid = find_closest_centroid_index(centroid_list=centroids, instance=instance,
+                                                               distance=self.distance)
+                centroids[closest_centroid].neighbors.append(instance)
 
             for i in range(len(centroids)):
-                centroids[i] = update_centroid(centroids[i], centroids_neighbors[i], dataset, self.distance)
-                diff_list.append(hamming_distance(centroids[i], old_centroids[i]))
+                centroids[i].update_centroid(self.distance)
+                centroids[i].update_wss(self.distance)
 
-            if sum(diff_list) > 0:
+            new_avg = get_mean_avg_v(copy.deepcopy(centroids))
+
+            if max_iterations == 0 or new_avg == self.avg_total_wss:
+                for i in centroids:
+                    group_list.append(i.get_neighbors_df())
                 should_repeat = False
 
-            if not should_repeat:
-                for i in range(self.k):
-                    group = []
-                    for n in centroids_neighbors[i]:
-                        group.append(dataset.iloc[n])
-                    group = pd.DataFrame(group)
-                    group_list.append(group)
+            self.avg_total_wss = new_avg
+
+            for i in range(len(centroids)):
+                centroids[i].clean_neighbors()
 
         return group_list
